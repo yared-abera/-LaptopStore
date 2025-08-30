@@ -20,7 +20,6 @@ const Home = () => {
       <div className="space-y-10 px-4 py-6">
       {/* Always visible */}
        < Slider />
-
       {/* Lazy Loaded Sections */}
        <LazySection sectionPath={"brand-new-laptop"}>
         <BrandNewLap />
