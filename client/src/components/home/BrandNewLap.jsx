@@ -15,7 +15,7 @@ const [isLoading, setIsLoading] = useState(true);
 
  useEffect(() => {
    setIsLoading(true);
-    dispatch(FetchAllLaptops()).then((response) => {
+   dispatch(FetchAllLaptops()).then((response) => {
      if (response.payload && response.payload.success) {
       // console.log("Laptops fetched successfully:", response.payload);
        const brandNewLaptops=LaptopsList.filter((laptop) => laptop.condition === "brand_new");
@@ -34,7 +34,7 @@ const [isLoading, setIsLoading] = useState(true);
   return (
      <>
      <div className='flex gap-1 '>
-      <h1 className='lg:text-4xl md:text-3xl text-2xl text-purple-600 w-[20%] font-bold 
+      <h1 className='lg:text-3xl md:text-2xl text-xl text-purple-600 w-[20%] font-bold 
       mb-4 my-5 pl-5 text-center '>Brand New <br/>Laptops</h1>  
        
       { brandNewLaptops&& brandNewLaptops.length > 0 ?
@@ -43,7 +43,8 @@ const [isLoading, setIsLoading] = useState(true);
         <p className="ml-2 text-lg text-gray-600">Loading...</p></div>):
       (<div className='grid grid-cols-1 md:grid-cols-2
         lg:grid-cols-4 gap-4 p-5 bg-gray-100 rounded-lg shadow-lg  
-         w-[80%]'  >    
+         w-[80%]'  > 
+       
        {LaptopsList.map((laptop) => {
        return  <UserProductCardView key={laptop._id} laptop={laptop} /> 
    })}
