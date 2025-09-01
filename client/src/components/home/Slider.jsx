@@ -66,18 +66,18 @@ export default function Slider() {
   className="w-full max-w-6xl lg:h-[250px] z-10 bg-transparent"
 >
   <CarouselContent className="w-full lg:h-[250px] items-center bg-transparent">
-    {Array.from({ length: filteredLaptops.length }).map((_, index) => (
+    {Array.from({ length:filteredLaptops.length>5?5:filteredLaptops.length }).map((_, index) => (
       <CarouselItem key={index} className="w-full lg:h-[250px]  bg-transparent">
         <div className="p-1 bg-transparent">
           <Card className="w-full lg:h-[250px] bg-transparent border-none"> 
             <CardContent className="flex w-full h-[250px]  items-center bg-transparent  ">
               {filteredLaptops[index] && filteredLaptops[index].imageUrl ? (  
              <>
-             <div div className="  h-auto w-1/2  p-2  flex items-end  bg-transparent   flex-col  ">
-                
-                 <div className="text-center w-1/2 bg-transparent"> <div className="text-center  "> 
-                  <h2 className="text-4xl    font-bold ">
-                  {filteredLaptops[index].model}
+             <div className="h-auto w-1/2  p-2  flex items-end  bg-transparent   flex-col  ">
+                 <div className="text-center w-1/2 bg-transparent"> 
+                 <div className="text-center "> 
+                  <h2 className="text-4xl  font-bold ">
+                  {filteredLaptops[index].model.slice(0, 20)+ (filteredLaptops[index].model.length > 20 ? '...' : '')}
                 </h2></div>
                 <div className="text-center" > <p className="text-xl  bg-transparent ">
                   Category: {filteredLaptops[index].category}

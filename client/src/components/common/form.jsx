@@ -4,8 +4,9 @@ import { Label } from '../ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
 import { Button } from '../ui/button';
 import { useState } from 'react';
+import { Loader2 } from 'lucide-react';
 
- function CommonForm({formControls,formData,setFormData,onSubmit,buttonText}) {
+ function CommonForm({formControls,formData,setFormData,onSubmit,buttonText,isLoading}) {
 
     const [ selectedBrand, setSelectedBrand] = useState('');
 
@@ -112,7 +113,7 @@ import { useState } from 'react';
            }
          </div>)}
         </div> 
-        <Button type="submit" className="mt-4 w-full">{buttonText || "Submit"}</Button> 
+        <Button type="submit" className="mt-4 w-full">{isLoading ? <Loader2 className='mr-2 h-4 w-4 animate-spin'/> :buttonText || "Submit" }</Button> 
      </form>
   )
 }

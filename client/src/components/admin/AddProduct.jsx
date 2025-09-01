@@ -40,15 +40,19 @@ const AddProduct = ({open,setOpen,}) => {
   const [formData, setFormData] =useState(initialLaptopFormData);
   const [imageFile, setImageFile] = useState(null);
   const [uploadedImageUrl, setUploadedImageUrl] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const dispatch= useDispatch();
 
 
  function onSubmit(event) {
   event.preventDefault();
+  setIsLoading(true);
   console.log("Form submitted with data to add laptop:", formData);
       const  response= dispatch(AddNewLaptop(formData)); 
        console.log("response from AddNewLaptop action:", response);
-      if(response.payload.success)  dispatch(FetchAllLaptops());
+      if(response.payload.success) {
+        setIsLoading(false);
+        dispatch(FetchAllLaptops());}
   console.log(response);
   
 }
@@ -83,7 +87,8 @@ const AddProduct = ({open,setOpen,}) => {
              formData={{...formData,imageUrl:uploadedImageUrl}}
              setFormData={setFormData}
              onSubmit={onSubmit}
-             buttonText="Add Laptop"    
+             buttonText="Add Laptop" 
+             isLoading={isLoading}   
             />
           </div>
         </SheetContent>
